@@ -1,4 +1,4 @@
-# Django E-Commerce Store
+# Simple E-Commerce Store
 
 A full-stack e-commerce web application developed as part of the CodeAlpha Full Stack Development Internship.
 
