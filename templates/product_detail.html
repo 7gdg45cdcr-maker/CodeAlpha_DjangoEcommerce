@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ product.name }} - ShopSphere
+{% endblock %}
+
+{% block content %}
+
+<section class="product-detail">
+
+    <div>
+        <img
+            src="{{ product.image }}"
+            alt="{{ product.name }}"
+            class="detail-image"
+        >
+    </div>
+
+    <div class="detail-info">
+
+        <p class="section-small">PRODUCT DETAILS</p>
+
+        <h1>{{ product.name }}</h1>
+
+        <p class="description">
+            {{ product.description }}
+        </p>
+
+        <h2>₹{{ product.price }}</h2>
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'add_to_cart' product.id %}"
+               class="primary-btn">
+                Add to Cart 🛒
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'login' %}"
+               class="primary-btn">
+                Login to Buy
+            </a>
+
+        {% endif %}
+
+        <br><br>
+
+        <a href="{% url 'products' %}" class="view-link">
+            ← Back to Products
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
