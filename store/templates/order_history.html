@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}
+My Orders - ShopSphere
+{% endblock %}
+
+{% block content %}
+
+<section class="section orders-page">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="section-small">SHOPSPHERE</p>
+            <h2>My Orders</h2>
+
+            <p class="page-description">
+                View your previous orders and their current status.
+            </p>
+        </div>
+
+    </div>
+
+
+    {% if orders %}
+
+        <div class="orders-list">
+
+            {% for order in orders %}
+
+            <div class="order-card">
+
+                <div class="order-header">
+
+                    <div>
+                        <span>Order ID</span>
+                        <h3>#{{ order.id }}</h3>
+                    </div>
+
+                    <div class="order-status">
+                        {{ order.status }}
+                    </div>
+
+                </div>
+
+
+                <div class="order-details">
+
+                    <div>
+                        <span>Date</span>
+                        <strong>
+                            {{ order.order_date|date:"d M Y, h:i A" }}
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Total Amount</span>
+                        <strong>
+                            ₹{{ order.total_price }}
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-cart">
+
+            <div class="empty-cart-icon">📦</div>
+
+            <h2>No Orders Yet</h2>
+
+            <p>
+                Your placed orders will appear here.
+            </p>
+
+            <a
+                href="{% url 'products' %}"
+                class="primary-btn"
+            >
+                Start Shopping
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}
